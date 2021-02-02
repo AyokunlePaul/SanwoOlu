@@ -17,8 +17,7 @@ fun DependencyHandler.implementAndroidX() {
         Dependencies.AndroidX.APP_COMPAT, Dependencies.AndroidX.CORE_KTX,
         Dependencies.AndroidX.MATERIAL, Dependencies.AndroidX.FRAGMENT_KTX,
         Dependencies.AndroidX.ACTIVITY_KTX, Dependencies.AndroidX.APP_COMPAT,
-        Dependencies.AndroidX.VIEWMODEL_KTX, Dependencies.AndroidX.LIVEDATA_KTX,
-        Dependencies.AndroidX.CONSTRAINT_LAYOUT
+        Dependencies.AndroidX.VIEWMODEL_KTX, Dependencies.AndroidX.CONSTRAINT_LAYOUT
     )
 }
 
@@ -36,19 +35,15 @@ fun DependencyHandler.implementLocal() {
     implementHilt()
     buildSrcImplementation(
         Dependencies.Room.RUNTIME, Dependencies.Room.KTX, Dependencies.Util.COIL,
-        Dependencies.Kotlin.COROUTINE,
-        Dependencies.ProtoBuf.CORE
+        Dependencies.Kotlin.COROUTINE
     )
-    api(Dependencies.AndroidX.DATA_STORE)
     kapt(Dependencies.Room.COMPILER)
     testImplementation(
         Dependencies.Room.TEST
     )
-    projectModule("domain")
 }
 
 fun DependencyHandler.implementRemote() {
-    projectModule("domain")
     api(
         Dependencies.Network.RETROFIT, Dependencies.Network.GSON_CONVERTER,
         Dependencies.Network.OKHTTP, Dependencies.Network.LOGGING_INTERCEPTOR
@@ -61,12 +56,5 @@ fun DependencyHandler.implementRemote() {
 fun DependencyHandler.implementData() {
     kotlin("stdlib-jdk8", version = Dependencies.Versions.Kotlin.CORE)
     implementVanillaHilt()
-    projectModule("domain")
     add("implementation", Dependencies.Kotlin.COROUTINE)
-}
-
-fun DependencyHandler.implementDomain() {
-    kotlin("stdlib-jdk8", version = Dependencies.Versions.Kotlin.CORE)
-    add("implementation", Dependencies.Kotlin.COROUTINE)
-    implementVanillaHilt()
 }

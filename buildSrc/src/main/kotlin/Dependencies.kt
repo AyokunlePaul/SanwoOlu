@@ -11,12 +11,6 @@ object Dependencies {
             const val GRADLE = "9.4.1"
         }
 
-        object ProtoBuf {
-            const val PLUGIN = "0.8.14"
-            const val CORE = "4.0.0-rc-2"
-            const val LITE_GEN = "3.0.0"
-        }
-
         object Test {
             const val CORE = "1.2.0"
             const val JUNIT = "4.12"
@@ -35,10 +29,7 @@ object Dependencies {
             const val ACTIVITY_KTX = "1.1.0"
             const val MATERIAL = "1.2.0"
             const val KTX = "2.2.0"
-            const val WORK_MANAGER_KTX = "2.4.0"
             const val CONSTRAINT_LAYOUT = "2.0.2"
-            const val VIEW_PAGER = "1.0.0"
-            const val DATA_STORE = "1.0.0-alpha06"
         }
 
         object Kotlin {
@@ -58,22 +49,16 @@ object Dependencies {
 
         object Utils {
             const val COIL = "1.0.0"
-            const val PAGE_INDICATOR = "1.0.3@aar"
             const val TIMBER = "4.7.0"
             const val ALERTER = "6.2.1"
             const val SPINKIT = "1.4.0"
-            const val CIRCLE_IMAGE_VIEW = "3.1.0"
-            const val EASY_PERMISSIONS = "0.1.0"
         }
     }
 
     object ProjectConstants {
         object ApplicationId {
-            const val BASE = "com.iseekme"
-            const val AUTHENTICATION = "com.iseekme.authentication"
-            const val CHAT = "com.iseekme.chat"
-            const val SEARCH = "com.iseekme.search"
-            const val BLOG = "com.iseekme.blog"
+            const val BASE = "com.sanwoolu"
+            const val USER = "com.sanwoolu.user"
         }
 
         const val MINIMUM_SDK = 21
@@ -107,15 +92,9 @@ object Dependencies {
         const val MATERIAL = "com.google.android.material:material:${Versions.AndroidX.MATERIAL}"
         const val VIEWMODEL_KTX =
             "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.AndroidX.KTX}"
-        const val LIVEDATA_KTX =
-            "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.AndroidX.KTX}"
-        const val WORK_MANAGER_KTX =
-            "androidx.work:work-runtime-ktx:${Versions.AndroidX.WORK_MANAGER_KTX}"
         const val CONSTRAINT_LAYOUT =
             "androidx.constraintlayout:constraintlayout:${Versions.AndroidX.CONSTRAINT_LAYOUT}"
-        const val VIEW_PAGER = "androidx.viewpager2:viewpager2:${Versions.AndroidX.VIEW_PAGER}"
         const val PLAY_CORE = "com.google.android.play:core-ktx:${Versions.Google.PLAY_CORE}"
-        const val DATA_STORE = "androidx.datastore:datastore:${Versions.AndroidX.DATA_STORE}"
     }
 
     object Test {
@@ -165,24 +144,11 @@ object Dependencies {
         const val MOCK_WEB_SERVER = "com.squareup.okhttp3:mockwebserver:${Versions.Network.OKHTTP}"
     }
 
-    object ProtoBuf {
-        const val CLASSPATH =
-            "com.google.protobuf:protobuf-gradle-plugin:${Versions.ProtoBuf.PLUGIN}"
-        const val CORE = "com.google.protobuf:protobuf-javalite:${Versions.ProtoBuf.CORE}"
-        const val ARTIFACT = "com.google.protobuf:protoc:${Versions.ProtoBuf.CORE}"
-        const val LITE_GEN = "com.google.protobuf:protoc-gen-javalite:${Versions.ProtoBuf.LITE_GEN}"
-    }
-
     object Util {
         const val COIL = "io.coil-kt:coil:${Versions.Utils.COIL}"
-        const val PAGER_INDICATOR =
-            "com.romandanylyk:pageindicatorview:${Versions.Utils.PAGE_INDICATOR}"
         const val TIMBER = "com.jakewharton.timber:timber:${Versions.Utils.TIMBER}"
         const val ALERTER = "com.tapadoo.android:alerter:${Versions.Utils.ALERTER}"
         const val SPINKIT = "com.github.ybq:Android-SpinKit:${Versions.Utils.SPINKIT}"
-        const val CIRCLE_IMAGE_VIEW = "de.hdodenhof:circleimageview:${Versions.Utils.CIRCLE_IMAGE_VIEW}"
-        const val EASY_PERMISSIONS = "com.vmadalin:easypermissions-ktx:${Versions.Utils.EASY_PERMISSIONS}"
-
     }
 
     object FlowBinding {
