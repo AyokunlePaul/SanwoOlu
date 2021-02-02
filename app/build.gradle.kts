@@ -53,5 +53,6 @@ dependencies {
     implementation(Dependencies.Kotlin.COROUTINE)
     implementation(Dependencies.Kotlin.COROUTINE_ANDROID)
     implementation(Dependencies.AndroidX.PLAY_CORE)
+    implementation(Dependencies.AndroidX.MATERIAL)
     implementHilt()
 }
