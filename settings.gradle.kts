@@ -1,3 +1,3 @@
 rootProject.name = "SanwoOlu"
 rootProject.buildFileName = "build.gradle.kts"
-include(":app")
+include(":app", ":local", ":remote")
