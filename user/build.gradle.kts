@@ -1,11 +1,9 @@
 plugins {
-    id("com.android.application")
+    id("com.android.dynamic-feature")
     kotlin("android")
     kotlin("kapt")
-    id("dagger.hilt.android.plugin")
     id("androidx.navigation.safeargs.kotlin")
 }
-
 android {
     compileSdkVersion(Dependencies.ProjectConstants.COMPILE_SDK)
     buildToolsVersion(Dependencies.ProjectConstants.BUILD_TOOLS_VERSION)
@@ -13,18 +11,17 @@ android {
     defaultConfig {
         minSdkVersion(Dependencies.ProjectConstants.MINIMUM_SDK)
         targetSdkVersion(Dependencies.ProjectConstants.TARGET_SDK)
-        applicationId = Dependencies.ProjectConstants.ApplicationId.BASE
+        applicationId = Dependencies.ProjectConstants.ApplicationId.USER
         versionCode = Dependencies.ProjectConstants.VERSION_CODE
         versionName = Dependencies.ProjectConstants.VERSION_NAME
-        multiDexEnabled = true
-        testInstrumentationRunner = Dependencies.ProjectConstants.TEST_INSTRUMENTATION_RUNNER
-        vectorDrawables.useSupportLibrary = true
-    }
 
+        testInstrumentationRunner = Dependencies.ProjectConstants.TEST_INSTRUMENTATION_RUNNER
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     buildTypes {
         named("release") {
             isMinifyEnabled = false
@@ -35,25 +32,20 @@ android {
                 "proguard-rules.pro"
             )
         }
-        named("debug") {
-            applicationIdSuffix = ".staging"
-            versionNameSuffix = "-staging"
-        }
     }
     buildFeatures.viewBinding = true
-
     sourceSets {
-        val mainSrcSet = project.file("src/main/kotlin")
-        findByName("main")?.java?.srcDirs(mainSrcSet)
+        sourceSets {
+            getByName("main").java.srcDirs("src/main/kotlin")
+            getByName("test").java.srcDirs("src/test/kotlin")
+            getByName("androidTest").java.srcDirs("src/androidTest/kotlin")
+        }
     }
-    dynamicFeatures = mutableSetOf(":user")
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation(Dependencies.Kotlin.COROUTINE)
-    implementation(Dependencies.Kotlin.COROUTINE_ANDROID)
-    implementation(Dependencies.AndroidX.PLAY_CORE)
-    implementation(Dependencies.AndroidX.MATERIAL)
+    implementation(Dependencies.Util.COIL)
     implementHilt()
+    implementation(project(":app"))
 }

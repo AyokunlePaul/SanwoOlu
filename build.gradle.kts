@@ -15,7 +15,7 @@ buildscript {
         classpath(Dependencies.GRADLE)
         classpath(Dependencies.Navigation.CLASSPATH)
         classpath(Dependencies.Hilt.CLASSPATH)
-        classpath(kotlin("gradle-plugin", version = Dependencies.Versions.Kotlin.CORE))
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21")
         classpath(Dependencies.Ktlint.CLASSPATH)
 
         // NOTE: Do not place your application dependencies here; they belong

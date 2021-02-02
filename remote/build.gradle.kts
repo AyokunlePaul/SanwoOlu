@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.konan.properties.loadProperties
+
 plugins {
     id("com.android.library")
     kotlin("android")
@@ -9,6 +11,8 @@ android {
     defaultConfig {
         minSdkVersion(Dependencies.ProjectConstants.MINIMUM_SDK)
         targetSdkVersion(Dependencies.ProjectConstants.TARGET_SDK)
+        buildConfigField("String", "BASE_URL", getProperty("BASE_URL"))
+        buildConfigField("String", "APP_ID", getProperty("APP_ID"))
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -26,4 +30,9 @@ dependencies {
     implementation(kotlin("stdlib-jdk8", version = Dependencies.Versions.Kotlin.CORE))
     implementation(Dependencies.Util.TIMBER)
     implementRemote()
+}
+
+fun getProperty(key: String): String {
+    val properties = loadProperties("local.properties")
+    return properties.getProperty(key)
 }
