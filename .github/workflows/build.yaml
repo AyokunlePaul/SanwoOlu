@@ -13,6 +13,8 @@ jobs:
       ## run unit tests
       - uses: actions/checkout@v2
       - name: Unit tests
+        with:
+          java-version: 11
         run: sudo bash ./gradlew test --stacktrace
 
   buildApk:
@@ -29,4 +31,6 @@ jobs:
 
       ## Generate debug apk
       - name: Assemble debug apk
+        with:
+          java-version: 11
         run: sudo ./gradlew :app:assembleDebug --stacktrace
