@@ -20,6 +20,9 @@ android {
         testInstrumentationRunner = Dependencies.ProjectConstants.TEST_INSTRUMENTATION_RUNNER
         vectorDrawables.useSupportLibrary = true
     }
+    lintOptions {
+        isAbortOnError = false
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -53,7 +56,12 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(Dependencies.Kotlin.COROUTINE)
     implementation(Dependencies.Kotlin.COROUTINE_ANDROID)
-    implementation(Dependencies.AndroidX.PLAY_CORE)
-    implementation(Dependencies.AndroidX.MATERIAL)
+    implementation(Dependencies.Util.COIL)
+    implementation(Dependencies.Util.TIMBER)
+    implementation(Dependencies.Util.ALERTER)
+    implementAndroidX()
+    implementNavigation()
     implementHilt()
+    implementation(project(":remote"))
+    implementation(project(":local"))
 }
