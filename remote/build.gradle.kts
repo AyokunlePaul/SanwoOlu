@@ -33,6 +33,14 @@ dependencies {
 }
 
 fun getProperty(key: String): String {
-    val properties = loadProperties("local.properties")
-    return properties.getProperty(key)
+    return try {
+        val properties = loadProperties("local.properties")
+        properties.getProperty(key)
+    } catch (exception: Exception) {
+        getEnvironmentVariable(key)
+    }
+}
+
+fun getEnvironmentVariable(key: String): String {
+    return System.getenv(key)
 }
