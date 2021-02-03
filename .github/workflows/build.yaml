@@ -5,32 +5,13 @@ on:
     branches:
       - master
 jobs:
-  unitTest:
-    name: Run unit tests
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      ## run unit tests
-      - uses: actions/checkout@v2
-      - name: Setup JDK version
-        uses: actions/setup-java@v2
-        with:
-          java-version: 11
-      - name: Unit tests
-        run: sudo bash ./gradlew test --stacktrace
-
-  buildApk:
-    name: Build debug apk
-    runs-on: ubuntu-latest
-
-    steps:
-      ## Initial setup.
-      - uses: actions/checkout@v2
-      - name: Set up JDK 11
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Build the app
         uses: actions/setup-java@v1
         with:
           java-version: 11
-
-      ## Generate debug apk
-      - name: Assemble debug apk
-        run: sudo ./gradlew :app:assembleDebug --stacktrace
+        run: ./gradlew build
