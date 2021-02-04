@@ -1,10 +1,25 @@
-name: Build
+name: SanwoOlu Action
+env:
+  APP_ID: ${{ secrets.APP_ID }}
+  BASE_URL: ${{ secrets.BASE_URL }}
 on:
   pull_request:
   push:
     branches:
       - master
 jobs:
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Java 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Run unit test
+        run: bash ./gradlew test --stacktrace
+
   build:
     runs-on: ubuntu-latest
     steps:
