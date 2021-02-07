@@ -16,7 +16,6 @@ import com.ayokunle.sanwoolu.utils.image.ImageLoader
 import com.ayokunle.sanwoolu.utils.itemdecoration.RecyclerInsetsDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -49,14 +48,15 @@ class UsersFragment : Fragment(), (UserEntity) -> Unit {
                     when (it) {
                         is UsersFragmentViewModel.GetUserResponse.Initial -> {
                         }
-                        is UsersFragmentViewModel.GetUserResponse.Loading,
+                        is UsersFragmentViewModel.GetUserResponse.Loading -> {
+                            binding.root.autoRefreshAnimationOnly()
+                        }
                         UsersFragmentViewModel.GetUserResponse.LoadingMore -> {
                         }
                         is UsersFragmentViewModel.GetUserResponse.Successful -> {
                             userAdapter.updateUsers(it.data)
                         }
                         is UsersFragmentViewModel.GetUserResponse.Failed -> {
-                            Timber.tag("User Fragment").e(it.message)
                         }
                     }
                 }
@@ -66,7 +66,7 @@ class UsersFragment : Fragment(), (UserEntity) -> Unit {
     }
 
     private fun setupViews() {
-        with(binding.root) {
+        with(binding.users) {
             adapter = userAdapter
             layoutManager = object : LinearLayoutManager(requireContext()) {
                 override fun supportsPredictiveItemAnimations(): Boolean = false

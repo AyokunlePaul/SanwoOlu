@@ -52,6 +52,7 @@ object Dependencies {
             const val TIMBER = "4.7.0"
             const val ALERTER = "6.2.1"
             const val SPINKIT = "1.4.0"
+            const val SMART_REFRESH = "2.0.3"
         }
     }
 
@@ -149,6 +150,14 @@ object Dependencies {
         const val TIMBER = "com.jakewharton.timber:timber:${Versions.Utils.TIMBER}"
         const val ALERTER = "com.tapadoo.android:alerter:${Versions.Utils.ALERTER}"
         const val SPINKIT = "com.github.ybq:Android-SpinKit:${Versions.Utils.SPINKIT}"
+    }
+
+    object SmartRefresh {
+        const val CORE = "com.scwang.smart:refresh-layout-kernel:${Versions.Utils.SMART_REFRESH}"
+        const val HEADER =
+            "com.scwang.smart:refresh-header-classics:${Versions.Utils.SMART_REFRESH}"
+        const val FOOTER =
+            "com.scwang.smart:refresh-footer-classics:${Versions.Utils.SMART_REFRESH}"
     }
 
     object FlowBinding {
